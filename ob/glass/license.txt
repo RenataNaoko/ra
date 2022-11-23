@@ -1,0 +1,11 @@
+Model Information:
+* title:	steampunk glasses
+* source:	https://sketchfab.com/3d-models/steampunk-glasses-808866ce78a24354ae871c0f8721097f
+* author:	Kisielev Mikhail (https://sketchfab.com/kiselevmiki)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "steampunk glasses" (https://sketchfab.com/3d-models/steampunk-glasses-808866ce78a24354ae871c0f8721097f) by Kisielev Mikhail (https://sketchfab.com/kiselevmiki) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
