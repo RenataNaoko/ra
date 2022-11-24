@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face-aframe.prod.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      const list = ["hat", "glasses"];
+      const visibles = [true, false];
+      const setVisible = (button, entities, visible) => {
+        if (visible) {
+          button.classList.add("selected");
+        } else {
+          button.classList.remove("selected");
+        }
+      entities.forEach((entity) => {
+        entity.setAttribute("visible", visible);
+      });
+    }
+    list.forEach((item, index) => {
+      const button = document.querySelector("#" + item);
+      const entities = document.querySelectorAll("." + item + "-entity");
+      setVisible(button, entities, visibles[index]);
+      button.addEventListener('click', () => {
+        visibles[index] = !visibles[index];
+        setVisible(button, entities, visibles[index]);
+      });
+     });
+    })
+    </script>
+    <style>
+      body {margin: 0;}
+      .example-container {overflow: hidden; position: absolute; width: 100%; height: 100%;}
+      .options-panel {position: fixed; left: 0; top: 0; z-index: 2;}
+      .options-panel img {border: solid 2px; width: 50px; height: 50px;	object-fit: cover;  
+        cursor: pointer;}
+      .options-panel img.selected {border-color: green;}
+    </style>
+  </head>
+  <body>
+    <div class="example-container">
+      <div class="options-panel">
+        <img id="hat" src="im/hat.png">
+        <img id="glasses" src="im/glasses.png">
+      </div>
+      <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+          <a-asset-item id="hatModel" src="https://renatanaoko.github.io/ra/ob/hat2/scene.gltf"></a-asset-item>
+          <a-asset-item id="glassesModel" src="https://renatanaoko.github.io/ra/ob/glass/scene.gltf"></a-asset-item>
+        </a-assets>
+        <a-camera position="0 0 0" active="false"  look-controls-enabled="false" rotation-reader 
+          arjs-look-controls="smoothingFactor: 0.05"></a-camera>
+        <a-entity mindar-face-target="anchorIndex: 10">
+            <a-gltf-model rotation="0 0 0" position="-0.1 0.3 -1.2" 
+              scale="0.7 0.7 0.7" src="#hatModel" class="hat-entity" visible="false"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model rotation="0 -0 0" position="0 0 0" 
+              scale="0.07 0.07 0.07" src="#glassesModel" class="glasses-entity" visible="false"></a-gltf-model>
+        </a-entity>
+      </a-scene>
+    </div>
+  </body>
+</html> 
